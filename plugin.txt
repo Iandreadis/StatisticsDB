@@ -1,1 +1,0 @@
-$ wget https://raw.githubusercontent.com/faudeltn/Jenkins/master/build/centos/plugins.txt
