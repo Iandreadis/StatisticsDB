@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-               sh "rmdir  /s /q StatisticsDB"
+               
                 sh "git clone https://github.com/Iandreadis/StatisticsDB.git"
                 sh "mvn clean -f StatisticsDB"
             }
