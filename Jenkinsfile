@@ -3,24 +3,24 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-               bat "rmdir  /s /q StatisticsDB"
-                bat "git clone https://github.com/Iandreadis/StatisticsDB.git"
-                bat "mvn clean -f StatisticsDB"
+               sh "rmdir  /s /q StatisticsDB"
+                sh "git clone https://github.com/Iandreadis/StatisticsDB.git"
+                sh "mvn clean -f StatisticsDB"
             }
         }
         stage('install') {
             steps {
-                bat "mvn install -f StatisticsDB"
+                sh "mvn install -f StatisticsDB"
             }
         }
         stage('test') {
             steps {
-                bat "mvn test -f StatisticsDB"
+                sh "mvn test -f StatisticsDB"
             }
         }
         stage('package') {
             steps {
-                bat "mvn package -f StatisticsDB"
+                sh "mvn package -f StatisticsDB"
             }
         }
     }
