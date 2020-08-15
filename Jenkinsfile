@@ -1,8 +1,27 @@
-node {
-	checkout scm
-	docker.withRegistry('https://hub.docker.com/repository/docker/iandreadis/newwebapp','dockerhub_id'){
-	def customImage=docker.build("iandreadis/newwebapp")
-	/* Push the container to custom Registry */
-	customImage.push()
-	}
-     }
+pipeline {
+    agent any
+    stages {
+        stage('git repo & clean') {
+            steps {
+               bat "rmdir  /s /q StatisticsDB"
+                bat "git clone https://github.com/Iandreadis/StatisticsDB.git"
+                bat "mvn clean -f StatisticsDB"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f StatisticsDB"
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test -f StatisticsDB"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package -f StatisticsDB"
+            }
+        }
+    }
+}
