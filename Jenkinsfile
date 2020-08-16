@@ -10,7 +10,7 @@ node{
    }
        */
    stage('Build Docker Image'){
-     sh 'docker build -t iandreadis/newwebapp .'
+     sh 'docker build -t iandreadis/newwebapp:latest .'
    }
    stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'iandreadis', variable: 'iandreadis91')]) {
