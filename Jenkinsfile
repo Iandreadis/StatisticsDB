@@ -2,12 +2,7 @@ node{
    stage('SCM Checkout'){
        git credentialsId: 'Iandreadis', url: 'https://github.com/Iandreadis/StatisticsDB.git'
    }
-   stage('Mvn Package'){
-     def mvnHome = tool name: 'Maven', type: 'maven'
-     def mvnCMD = "${mvnHome}/bin/mvn"
-     sh "${mvnCMD} clean package"
- 
-   }
+
        
    stage('Build Docker Image'){
      sh 'docker build -t iandreadis/newwebapp:latest .'
