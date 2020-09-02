@@ -7,6 +7,12 @@ node{
     registry = "docker_hub_account/repository_name"
     registryCredential = 'dockerhub'
    }
+   
+   environment {
+        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+    }
+   
    stage('Prepare Mysql Docker') {
       
    }*/
@@ -14,7 +20,7 @@ node{
    stage('Run Container on Dev Server'){
      def dockerRun = 'docker run -p 3306:3306 -d --name statisticsDB mysql/mysql-server'
      sshagent(['dev-server']) {
-       sh "ssh -o StrictHostKeyChecking=no http://ec2-3-127-66-74.eu-central-1.compute.amazonaws.com:8088/manager/html ${dockerRun}"
+       sh "ssh -o StrictHostKeyChecking=no ec2-3-127-66-74.eu-central-1.compute.amazonaws.com ${dockerRun}"
      }
    }
        
