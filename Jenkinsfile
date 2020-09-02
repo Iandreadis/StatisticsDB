@@ -3,8 +3,22 @@ node{
        git credentialsId: 'Iandreadis', url: 'https://github.com/Iandreadis/StatisticsDB.git'
    }
 
+  /* environment {
+    registry = "docker_hub_account/repository_name"
+    registryCredential = 'dockerhub'
+   }
+   stage('Prepare Mysql Docker') {
+      
+   }*/
+   
+   stage('Run Container on Dev Server'){
+     def dockerRun = 'docker run -p 3306:3306 -d --name statisticsDB mysql/mysql-server'
+     sshagent(['dev-server']) {
+       sh "ssh -o StrictHostKeyChecking=no http://ec2-3-127-66-74.eu-central-1.compute.amazonaws.com:8088/manager/html ${dockerRun}"
+     }
+   }
        
-   stage('Build Docker Image'){
+  /* stage('Build Docker Image'){
      sh 'docker build -t iandreadis/newwebapp:latest .'
    }
    stage('Push Docker Image'){
@@ -18,5 +32,5 @@ node{
      sshagent(['dev-server']) {
        sh "ssh -o StrictHostKeyChecking=no http://ec2-3-127-66-74.eu-central-1.compute.amazonaws.com:8088/manager/html ${dockerRun}"
      }
-   }
+   } */
 }
