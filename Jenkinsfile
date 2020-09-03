@@ -23,9 +23,9 @@ node{
    } */
        
    stage('Build Docker Image'){
-     sh 'docker build -t iandreadis/newwebapp:latest .'
+     sh 'docker build https://github.com/Iandreadis/StatisticsDB.git/StatisticsDB.sql'
    }
-   stage('Push Docker Image'){
+  /* stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'iandreadis', variable: 'iandreadis91')]) {
         sh "docker login -u iandreadis -p ${iandreadis91}"
         sh "docker push iandreadis/newwebapp"
@@ -38,4 +38,5 @@ node{
        sh "ssh -o StrictHostKeyChecking=no http://ec2-3-127-66-74.eu-central-1.compute.amazonaws.com:8088/manager/html ${dockerRun}"
      }
    } 
+   */
 }
