@@ -24,7 +24,7 @@ node{
      }
    }
        
-  /* stage('Build Docker Image'){
+   stage('Build Docker Image'){
      sh 'docker build -t iandreadis/newwebapp:latest .'
    }
    stage('Push Docker Image'){
@@ -38,5 +38,5 @@ node{
      sshagent(['dev-server']) {
        sh "ssh -o StrictHostKeyChecking=no http://ec2-3-127-66-74.eu-central-1.compute.amazonaws.com:8088/manager/html ${dockerRun}"
      }
-   } */
+   } 
 }
