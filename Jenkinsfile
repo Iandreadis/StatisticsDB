@@ -9,11 +9,14 @@ node{
    }
    
    environment {
-        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+        AWS_ACCESS_KEY_ID     = credentials('AKIAJZ4P46WFF3O2NMSA')
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
     }
-   
-
+   //check if docker is installed  (if reports "installed" it is installed)
+   stage('check if docker is installed'){
+      
+      sh "apt -qq list docker-ce"
+   }
    
   /* stage('Run Container on Dev Server'){
      def dockerRun = 'docker run -p 3306:3306 -d --name statisticsDB mysql/mysql-server'
@@ -22,8 +25,8 @@ node{
      }
    } */
        
-   stage('Build Docker Image'){
-     sh 'docker build https://github.com/Iandreadis/StatisticsDB.git/StatisticsDB.sql'
+   // stage('Build Docker Image'){
+     // sh 'docker build https://github.com/Iandreadis/StatisticsDB.git/StatisticsDB.sql'
    }
   /* stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'iandreadis', variable: 'iandreadis91')]) {
