@@ -25,9 +25,10 @@ node{
      }
    } */
        
-   // stage('Build Docker Image'){
-     // sh 'docker build https://github.com/Iandreadis/StatisticsDB.git/StatisticsDB.sql'
+   /* stage('Build Docker Image'){
+      sh 'docker build https://github.com/Iandreadis/StatisticsDB.git/StatisticsDB.sql'
    }
+   */
   /* stage('Push Docker Image'){
      withCredentials([string(credentialsId: 'iandreadis', variable: 'iandreadis91')]) {
         sh "docker login -u iandreadis -p ${iandreadis91}"
