@@ -19,7 +19,7 @@ node{
    //check if docker is installed  (if reports "installed" it is installed)
    stage('execute command in mysql in docker'){
       
-      sh "docker exec -i mysql-latest mysql -u root --password=strongpassword -e 'show databases;'"
+     // sh "docker exec -i mysql-latest mysql -u root --password=strongpassword -e 'show databases;'"
    }
    
   /* stage('Run Container on Dev Server'){
