@@ -1,4 +1,8 @@
 node{
+     withCredentials([usernamePassword(credentialsId: 'sshUserAcct', passwordVariable: 'password', usernameVariable: 'userName')]) {
+        remote.user = userName
+        remote.password = password
+   
    stage('SCM Checkout'){
        git credentialsId: 'Iandreadis', url: 'https://github.com/Iandreadis/StatisticsDB.git'
    }
@@ -15,7 +19,7 @@ node{
    //check if docker is installed  (if reports "installed" it is installed)
    stage('check if docker is installed'){
       
-      sh "apt-get install docker-ce docker-ce-cli"
+      sh "docker exec -i mysql-latest mysql -u root --password=strongpassword -e 'show databases;'"
    }
    
   /* stage('Run Container on Dev Server'){
