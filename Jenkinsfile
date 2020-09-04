@@ -17,7 +17,7 @@ node{
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
     }
    //check if docker is installed  (if reports "installed" it is installed)
-   stage('check if docker is installed'){
+   stage('execute command in mysql in docker'){
       
       sh "docker exec -i mysql-latest mysql -u root --password=strongpassword -e 'show databases;'"
    }
