@@ -15,7 +15,7 @@ node{
    //check if docker is installed  (if reports "installed" it is installed)
    stage('check if docker is installed'){
       
-      sh "apt -qq list docker-ce"
+      sh "apt-get install docker-ce docker-ce-cli"
    }
    
   /* stage('Run Container on Dev Server'){
