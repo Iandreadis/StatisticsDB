@@ -20,7 +20,7 @@ node{
   // stage('execute command in mysql in docker'){
       
      // sh "docker exec -i mysql-latest mysql -u root --password=strongpassword -e 'show databases;'"
-   }
+ //  }
    
   /* stage('Run Container on Dev Server'){
      def dockerRun = 'docker run -p 3306:3306 -d --name statisticsDB mysql/mysql-server'
