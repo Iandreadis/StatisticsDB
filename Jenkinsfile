@@ -1,13 +1,6 @@
-node{
-    /* withCredentials([usernamePassword(credentialsId: 'sshUserAcct', passwordVariable: 'password', usernameVariable: 'userName')]) {
-        remote.user = userName
-        remote.password = password
-   */
-   stage('SCM Checkout'){
-       git credentialsId: 'Iandreadis', url: 'https://github.com/Iandreadis/StatisticsDB.git'
-   }
-
-   environment {
+pipeline{
+    
+      environment {
     registry = "iandreadis/newwebapp"
     registryCredential = 'Docker'
    }
@@ -16,6 +9,14 @@ node{
         AWS_ACCESS_KEY_ID     = credentials('AKIAJZ4P46WFF3O2NMSA')
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
    }
+    agent any
+        stages{
+   
+   stage('SCM Checkout'){
+       git credentialsId: 'Iandreadis', url: 'https://github.com/Iandreadis/StatisticsDB.git'
+   }
+
+ 
       stage('Building image') {
       steps{
         script {
@@ -38,7 +39,7 @@ node{
       }
     }
   }
-
+ }
    // check if docker is installed  (if reports "installed" it is installed)
   // stage('execute command in mysql in docker'){
       
