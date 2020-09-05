@@ -1,13 +1,13 @@
 node{
-     withCredentials([usernamePassword(credentialsId: 'sshUserAcct', passwordVariable: 'password', usernameVariable: 'userName')]) {
+    /* withCredentials([usernamePassword(credentialsId: 'sshUserAcct', passwordVariable: 'password', usernameVariable: 'userName')]) {
         remote.user = userName
         remote.password = password
-   
+   */
    stage('SCM Checkout'){
        git credentialsId: 'Iandreadis', url: 'https://github.com/Iandreadis/StatisticsDB.git'
    }
 
-   environment {
+  /* environment {
     registry = "docker_hub_account/repository_name"
     registryCredential = 'dockerhub'
    }
@@ -16,6 +16,7 @@ node{
         AWS_ACCESS_KEY_ID     = credentials('AKIAJZ4P46WFF3O2NMSA')
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
     }
+    */
    // check if docker is installed  (if reports "installed" it is installed)
   // stage('execute command in mysql in docker'){
       
