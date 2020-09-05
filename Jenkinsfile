@@ -37,7 +37,7 @@ node{
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-  
+  }
 
    // check if docker is installed  (if reports "installed" it is installed)
   // stage('execute command in mysql in docker'){
@@ -71,4 +71,4 @@ node{
      }
    } 
    */
-}
+
