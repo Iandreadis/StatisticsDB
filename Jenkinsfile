@@ -15,7 +15,7 @@ pipeline{
            
        git credentialsId: 'Iandreadis', url: 'https://github.com/Iandreadis/StatisticsDB.git/StatisticsDB.sql'
    }
-   }
+  }
 
  
       stage('Building image') {
@@ -75,4 +75,4 @@ pipeline{
    } 
    */
 
-}
+
