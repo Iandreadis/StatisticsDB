@@ -33,13 +33,14 @@ pipeline{
           }
         }
       }
-    
+    }
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
   }
+}
  
     /*
    // check if docker is installed  (if reports "installed" it is installed)
@@ -75,5 +76,4 @@ pipeline{
    } 
    */
 
-        }
-}
+        
