@@ -3,11 +3,9 @@ pipeline{
   environment {
     registry = "iandreadis/newwebapp"
     registryCredential = 'Docker'
-   }
-   
-  environment {
-        AWS_ACCESS_KEY_ID     = credentials('AKIAJZ4P46WFF3O2NMSA')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+  
+     AWS_ACCESS_KEY_ID     = credentials('AKIAJZ4P46WFF3O2NMSA')
+     AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
    }
     agent any
         stages{
