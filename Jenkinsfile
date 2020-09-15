@@ -11,7 +11,10 @@ pipeline{
         stages{
    
    stage('SCM Checkout'){
+       steps{
+           
        git credentialsId: 'Iandreadis', url: 'https://github.com/Iandreadis/StatisticsDB.git/StatisticsDB.sql'
+   }
    }
 
  
